@@ -1,76 +1,8 @@
-import './style.css'
-import * as nacl from 'tweetnacl'
-import { SignalClient, toBase64URL } from "@algorandfoundation/liquid-client";
+import nacl from 'tweetnacl';
+import { SignalClient } from "./src/signal.js";
+import { toBase64URL} from './src/encoding.js';
+import {testAccount} from './test/test.account.js';
 
-const testAccount = {
-    addr: "IKMUKRWTOEJMMJD4MUAQWWB4C473DEHXLCYHJ4R3RZWZKPNE7E2ZTQ7VD4",
-    sk: new Uint8Array([
-        153,
-        99,
-        94,
-        233,
-        195,
-        182,
-        109,
-        64,
-        9,
-        200,
-        81,
-        184,
-        78,
-        219,
-        114,
-        95,
-        177,
-        210,
-        244,
-        157,
-        200,
-        206,
-        99,
-        196,
-        224,
-        196,
-        38,
-        72,
-        151,
-        81,
-        204,
-        245,
-        66,
-        153,
-        69,
-        70,
-        211,
-        113,
-        18,
-        198,
-        36,
-        124,
-        101,
-        1,
-        11,
-        88,
-        60,
-        23,
-        63,
-        177,
-        144,
-        247,
-        88,
-        176,
-        116,
-        242,
-        59,
-        142,
-        109,
-        149,
-        61,
-        164,
-        249,
-        53
-    ])
-}
 // The Signaling Client
 const client = new SignalClient(window.origin)
 // WebRTC Configuration
@@ -94,18 +26,6 @@ const RTC_CONFIGURATION = {
             ],
             username: import.meta.env.VITE_NODELY_TURN_USERNAME || 'username',
             credential: import.meta.env.VITE_NODELY_TURN_CREDENTIAL || 'credential',
-        },
-        {
-            urls: [
-                "turn:global.relay.metered.ca:80",
-                "turn:global.relay.metered.ca:80?transport=tcp",
-                "turn:global.relay.metered.ca:443",
-                "turns:global.relay.metered.ca:443?transport=tcp"
-            ],
-            // default username and credential when the turn server doesn't
-            // use auth, the client still requires a value
-            username: import.meta.env.VITE_TURN_USERNAME || 'username',
-            credential: import.meta.env.VITE_TURN_CREDENTIAL || 'credential',
         },
     ],
     iceCandidatePoolSize: 10,
@@ -201,13 +121,13 @@ async function handleOfferClient() {
 async function handleSignChallenge() {
     // Sign in to the service with a new credential
     await client.attestation(async (challenge: Uint8Array) => ({
-        requestId: parseFloat(altRequestId),
+        requestId: altRequestId,
         origin: window.origin,
         type: 'algorand',
         address: testAccount.addr,
         signature: toBase64URL(nacl.sign.detached(challenge, testAccount.sk)),
         device: 'Demo Web Wallet'
-    }))
+    }), undefined, true)
     // TODO: sign in with an existing credential
     //await client.assertion()
 
