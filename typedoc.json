@@ -1,6 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "name": "@algorandfoundation/liquid-client",
+  "name": "@algorandecosystem/liquid-client",
   "customFooterHtml": "Copyright <strong>Algorand Foundation</strong> 2025",
   "hideGenerator": true,
   "excludeInternal": true,

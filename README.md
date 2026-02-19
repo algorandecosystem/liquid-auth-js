@@ -1,4 +1,4 @@
-# @algorandfoundation/liquid-client
+# @algorandecosystem/liquid-client
 
 [![CI](https://github.com/algorandfoundation/liquid-auth-js/actions/workflows/CI.yml/badge.svg)](https://github.com/algorandfoundation/liquid-auth-js/actions/workflows/CI.yml)[![Publish Package](https://github.com/algorandfoundation/liquid-auth-js/actions/workflows/package-release.yml/badge.svg)](https://github.com/algorandfoundation/liquid-auth-js/actions/workflows/package-release.yml)[![codecov](https://codecov.io/gh/algorandfoundation/liquid-auth-js/graph/badge.svg?token=AKN7VATWTO)](https://codecov.io/gh/algorandfoundation/liquid-auth-js)[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
@@ -15,7 +15,7 @@ npm install algorandfoundation/liquid-auth-js --save
 # 📝 Usage
 
 ```typescript
-import {SignalClient} from '@algorandfoundation/liquid-client';
+import {SignalClient} from '@algorandecosystem/liquid-client';
 const client = new SignalClient(window.origin);
 ```
 

@@ -18,7 +18,7 @@ The caller must provide a callback that will be called when a challenge is recei
 ```typescript
 // browser.client.ts
 import * as nacl from 'tweetnacl'
-import {toBase64URL} from '@algorandfoundation/liquid-client/encoding'
+import {toBase64URL} from '@algorandecosystem/liquid-client/encoding'
 
 // Sign in to the service with a new credential and wallet
 await client.attestation(
@@ -45,8 +45,8 @@ Using the `attestation` method to create a passkey without using the `SignalClie
 
 ```typescript
 import * as nacl from 'tweetnacl'
-import {attestation} from '@algorandfoundation/liquid-client/attestation'
-import {toBase64URL} from '@algorandfoundation/liquid-client/encoding'
+import {attestation} from '@algorandecosystem/liquid-client/attestation'
+import {toBase64URL} from '@algorandecosystem/liquid-client/encoding'
 
 await attestation(
   "https://my-liquid-service.com",
@@ -76,7 +76,7 @@ the three steps of the process.
 Manually fetching the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions" target="_blank">PublicKeyCredentialCreationOptions</a> from the service.
 
 ```typescript
-import {fetch} from '@algorandfoundation/liquid-client/attestation'
+import {fetch} from '@algorandecosystem/liquid-client/attestation'
 
 const encodedOptions = await fetch.postOptions("https://my-liquid-service.com")
 ```
@@ -86,7 +86,7 @@ const encodedOptions = await fetch.postOptions("https://my-liquid-service.com")
 Decode the options and create a new passkey.
 
 ```typescript
-import {decodeAddress, fromBase64Url} from "@algorandfoundation/liquid-client/encoding";
+import {decodeAddress, fromBase64Url} from "@algorandecosystem/liquid-client/encoding";
 
 const options = { ...encodedOptions };
 // Uint8Array of the user's id, is set as the encoded address for this type of key
@@ -118,7 +118,7 @@ Sign the challenge with an additional KeyPair.
 
 ```typescript
 import * as nacl from 'tweetnacl'
-import {toBase64URL} from '@algorandfoundation/liquid-client/encoding'
+import {toBase64URL} from '@algorandecosystem/liquid-client/encoding'
 
 credential.clientExtensionResults = {
     // The type of signature and public key, this is also used
@@ -140,8 +140,8 @@ credential.clientExtensionResults = {
 Encode and submit the passkey to the service.
 
 ```typescript
-import {fetch} from '@algorandfoundation/liquid-client/attestation'
-import {toBase64URL} from '@algorandfoundation/liquid-client/encoding'
+import {fetch} from '@algorandecosystem/liquid-client/attestation'
+import {toBase64URL} from '@algorandecosystem/liquid-client/encoding'
 
 const result = await fetch.postResponse("https://my-liquid-service.com", {
     id: credential.id,

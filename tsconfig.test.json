@@ -10,14 +10,14 @@
     "target": "esnext",
     "strict": true,
     "paths": {
-      "@algorandfoundation/liquid-client": ["./src/index.ts"],
-      "@algorandfoundation/liquid-client/encoding": ["./src/encoder.ts"],
-      "@algorandfoundation/liquid-client/attestation": ["./src/attestation.ts"],
-      "@algorandfoundation/liquid-client/attestation/fetch": ["./src/attestation.fetch.ts"],
-      "@algorandfoundation/liquid-client/attestation/encoder": ["./src/attestation.encoder.ts"],
-      "@algorandfoundation/liquid-client/assertion": ["./src/assertion.ts"],
-      "@algorandfoundation/liquid-client/assertion/fetch": ["./src/assertion.fetch.ts"],
-      "@algorandfoundation/liquid-client/assertion/encoder": ["./src/assertion.encoder.ts"]
+      "@algorandecosystem/liquid-client": ["./src/index.ts"],
+      "@algorandecosystem/liquid-client/encoding": ["./src/encoder.ts"],
+      "@algorandecosystem/liquid-client/attestation": ["./src/attestation.ts"],
+      "@algorandecosystem/liquid-client/attestation/fetch": ["./src/attestation.fetch.ts"],
+      "@algorandecosystem/liquid-client/attestation/encoder": ["./src/attestation.encoder.ts"],
+      "@algorandecosystem/liquid-client/assertion": ["./src/assertion.ts"],
+      "@algorandecosystem/liquid-client/assertion/fetch": ["./src/assertion.fetch.ts"],
+      "@algorandecosystem/liquid-client/assertion/encoder": ["./src/assertion.encoder.ts"]
     }
   },
   "exclude": [
