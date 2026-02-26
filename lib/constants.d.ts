@@ -1,4 +1,4 @@
-import { Options as QRCodeOptions } from 'qr-code-styling';
+import { QRCodeToDataURLOptions } from 'qrcode';
 /**
  * DEFAULT_FETCH_OPTIONS is a constant object used as a default configuration
  * for HTTP fetch requests. It defines the HTTP method and headers settings
@@ -21,4 +21,4 @@ export declare const DEFAULT_FETCH_OPTIONS: {
         'Content-Type': string;
     };
 };
-export declare const DEFAULT_QR_CODE_OPTIONS: QRCodeOptions;
+export declare const DEFAULT_QR_CODE_OPTIONS: QRCodeToDataURLOptions;

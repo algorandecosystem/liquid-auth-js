@@ -1,5 +1,5 @@
 import { ManagerOptions, Socket, SocketOptions } from 'socket.io-client';
-import { Options as QRCodeOptions } from 'qr-code-styling';
+import { QRCodeToDataURLOptions } from 'qrcode';
 import { EventEmitter } from 'eventemitter3';
 export type LinkMessage = {
     credId?: string;
@@ -9,7 +9,7 @@ export type LinkMessage = {
 export declare function generateQRCode({ requestId, url }: {
     requestId?: string;
     url: string;
-}, qrCodeOptions?: QRCodeOptions): Promise<any>;
+}, qrCodeOptions?: QRCodeToDataURLOptions): Promise<any>;
 /**
  * Generate a Deep Link URI
  * @param {string} origin
