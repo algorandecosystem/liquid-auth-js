@@ -16,18 +16,18 @@ export default defineConfig({
     dts({ tsconfigPath: './tsconfig.app.json' }),
     codecovVitePlugin({
       enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-      bundleName: '@algorandfoundation/liquid-client',
+      bundleName: '@algorandecosystem/liquid-client',
       uploadToken: process.env.CODECOV_TOKEN,
     }),
   ],
   resolve: {
     alias: {
-      '@algorandfoundation/liquid-client': resolve(__dirname, './src'),
-      '@algorandfoundation/liquid-client/assertion': resolve(
+      '@algorandecosystem/liquid-client': resolve(__dirname, './src'),
+      '@algorandecosystem/liquid-client/assertion': resolve(
         __dirname,
         './src/assertion',
       ),
-      '@algorandfoundation/liquid-client/encoding': resolve(
+      '@algorandecosystem/liquid-client/encoding': resolve(
         __dirname,
         './src/encoder',
       ),

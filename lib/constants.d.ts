@@ -1,13 +1,4 @@
-/**
- * Module For Defaults
- *
- *
- * @packageDocumentation
- * @protected
- */
-
-import type { QRCodeToDataURLOptions } from 'qrcode';
-
+import { QRCodeToDataURLOptions } from 'qrcode';
 /**
  * DEFAULT_FETCH_OPTIONS is a constant object used as a default configuration
  * for HTTP fetch requests. It defines the HTTP method and headers settings
@@ -24,18 +15,10 @@ import type { QRCodeToDataURLOptions } from 'qrcode';
  *
  * @internal
  */
-export const DEFAULT_FETCH_OPTIONS = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+export declare const DEFAULT_FETCH_OPTIONS: {
+    method: string;
+    headers: {
+        'Content-Type': string;
+    };
 };
-
-export const DEFAULT_QR_CODE_OPTIONS: QRCodeToDataURLOptions = {
-  width: 500,
-  margin: 4,
-  color: {
-    dark: '#332257',
-    light: '#ffffff',
-  },
-};
+export declare const DEFAULT_QR_CODE_OPTIONS: QRCodeToDataURLOptions;

@@ -1,6 +1,6 @@
 {
-  "name": "@algorandfoundation/liquid-client",
-  "version": "1.0.0-canary.3",
+  "name": "@algorandecosystem/liquid-client",
+  "version": "1.0.0-beta.1",
   "description": "Connect to a Liquid Auth service",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -55,7 +55,7 @@
     "typedoc-dev": "concurrently \"npm:typedoc:*\"",
     "release": "semantic-release"
   },
-  "author": "Algorand Foundation",
+  "author": "Algorand Ecosystem",
   "license": "Apache-2.0",
   "devDependencies": {
     "@codecov/vite-plugin": "^1.9.0",
@@ -65,7 +65,6 @@
     "@semantic-release/github": "^10.0.3",
     "@semantic-release/npm": "^12.0.0",
     "@semantic-release/release-notes-generator": "^13.0.0",
-    "@types/qrcode": "^1.5.5",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
@@ -92,18 +91,132 @@
     "wait-on": "^8.0.3"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
     "eventemitter3": "^5.0.1",
-    "qr-code-styling": "^1.9.1",
+    "qrcode": "^1.5.4",
     "socket.io-client": "^4.7.5",
     "tweetnacl": "^1.0.3",
     "uuid": "^10.0.0"
   },
   "release": {
     "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "breaking",
+              "release": "major"
+            },
+            {
+              "type": "feat",
+              "release": "minor"
+            },
+            {
+              "type": "chore",
+              "release": "minor"
+            },
+            {
+              "type": "ci",
+              "release": "patch"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "test",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            },
+            {
+              "type": "style",
+              "release": "patch"
+            },
+            {
+              "type": "build",
+              "release": "patch"
+            },
+            {
+              "type": "revert",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "breaking",
+                "section": "Breaking",
+                "hidden": false
+              },
+              {
+                "type": "feat",
+                "section": "Features",
+                "hidden": false
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes",
+                "hidden": false
+              },
+              {
+                "type": "docs",
+                "section": "Documentation",
+                "hidden": false
+              },
+              {
+                "type": "style",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              },
+              {
+                "type": "perf",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              },
+              {
+                "type": "test",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              },
+              {
+                "type": "ci",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              },
+              {
+                "type": "chore",
+                "section": "Updates & Maintenance",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
       "@semantic-release/npm",
       [
         "@semantic-release/git",
@@ -112,7 +225,7 @@
             "CHANGELOG.md",
             "package.json"
           ],
-          "message": "chore(release): [skip ci] Liquid Client \n\n${nextRelease.notes}"
+          "message": "release: v${nextRelease.version}"
         }
       ],
       [
@@ -123,11 +236,7 @@
       ]
     ],
     "branches": [
-      "release/*",
-      {
-        "name": "main",
-        "prerelease": "canary"
-      }
+      "main"
     ]
   }
 }

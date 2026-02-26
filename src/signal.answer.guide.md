@@ -18,7 +18,7 @@ Request IDs are given to the remote peer, usually as a deep-link encoded into a 
 This ID is used by the remote peer to authenticate the current client.
 
 ```typescript
-import { SignalClient } from '@algorandfoundation/liquid-client';
+import { SignalClient } from '@algorandecosystem/liquid-client';
 const requestId = SignalClient.generateRequestId();
 ```
 

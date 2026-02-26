@@ -1,8 +1,8 @@
 import { describe, it, beforeAll, expect } from 'vitest';
 import { createMockFetch, createMocks } from '../test/test.config';
 // #region assertionImport
-import { assertion } from '@algorandfoundation/liquid-client';
-import type { EncodedCredential } from '@algorandfoundation/liquid-client/assertion/encoder';
+import { assertion } from '@algorandecosystem/liquid-client';
+import type { EncodedCredential } from '@algorandecosystem/liquid-client/assertion/encoder';
 // #endregion assertionImport
 
 import requestParamFixtures from '../__fixtures__/assertion.request.param.fixtures.json';

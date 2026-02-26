@@ -20,7 +20,7 @@ Wallets are responsible for creating offers to connect.
 ## Signaling
 
 ```typescript
-import { SignalClient } from "@algorandfoundation/liquid-client";
+import { SignalClient } from "@algorandecosystem/liquid-client";
 const client = new SignalClient("<ORIGIN-FROM-QR-CODE>")
 
 // Receive the RequestID from the Peer willing to Answer this offer

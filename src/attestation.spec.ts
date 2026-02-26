@@ -1,7 +1,7 @@
 import { describe, it, beforeAll, expect } from 'vitest';
 import { createMocks } from '../test/test.config';
 // #region import
-import { attestation } from '@algorandfoundation/liquid-client/attestation';
+import { attestation } from '@algorandecosystem/liquid-client/attestation';
 // #endregion import
 
 import requestBodyFixtures from '../__fixtures__/attestation.request.body.fixtures.json';
