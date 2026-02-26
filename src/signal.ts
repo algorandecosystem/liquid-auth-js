@@ -6,9 +6,8 @@
  * @document ./signal.answer.guide.md
  */
 import { io, ManagerOptions, Socket, SocketOptions } from 'socket.io-client';
-import QRCodeStyling from 'qr-code-styling';
-import { Options as QRCodeOptions } from 'qr-code-styling';
-const QRCodeStylingConstructor = (QRCodeStyling as any).default || QRCodeStyling;
+import QRCode from 'qrcode';
+import type { QRCodeToDataURLOptions } from 'qrcode';
 import { EventEmitter } from 'eventemitter3';
 import { v7 as uuidv7 } from 'uuid';
 
@@ -32,17 +31,12 @@ export type LinkMessage = {
 
 export async function generateQRCode(
   { requestId, url }: { requestId?: string; url: string },
-  qrCodeOptions: QRCodeOptions = DEFAULT_QR_CODE_OPTIONS,
+  qrCodeOptions: QRCodeToDataURLOptions = DEFAULT_QR_CODE_OPTIONS,
 ) {
   if (typeof requestId === 'undefined')
     throw new Error(REQUEST_IS_MISSING_MESSAGE);
-  qrCodeOptions.data = generateDeepLink(url, requestId);
-
-  const qrCode = new QRCodeStylingConstructor(qrCodeOptions);
-  return await qrCode.getRawData('png').then((blob) => {
-    if (!blob) throw new TypeError('Could not get qrcode blob');
-    return URL.createObjectURL(blob);
-  });
+  const data = generateDeepLink(url, requestId);
+  return await QRCode.toDataURL(data, qrCodeOptions);
 }
 
 /**
@@ -68,7 +62,7 @@ export class SignalClient extends EventEmitter {
   private authenticated: boolean = false;
   private requestId: string | undefined;
   peerClient: RTCPeerConnection | undefined;
-  private qrCodeOptions: QRCodeOptions = DEFAULT_QR_CODE_OPTIONS;
+  private qrCodeOptions: QRCodeToDataURLOptions = DEFAULT_QR_CODE_OPTIONS;
   socket: Socket;
 
   /**

@@ -89,19 +89,14 @@ describe('SignalClient', function () {
     expect(id.length).toBe(36);
   });
 
-  // TODO: Decide what to do with QR Code generation, possibly fork and maintain the library since Pera also uses it
   test('qrCode', async function () {
     await expect(() => client.qrCode()).rejects.toThrow(
       new Error(REQUEST_IS_MISSING_MESSAGE),
     );
 
     client.requestId = SignalClient.generateRequestId();
-    if (typeof window !== 'undefined') {
-      const qrCode = await client.qrCode();
-      expect(qrCode).toBeDefined();
-    } else {
-      await expect(() => client.qrCode()).rejects.toThrow();
-    }
+    const qrCode = await client.qrCode();
+    expect(qrCode).toBeDefined();
   });
 
   test('deepLink', function () {
@@ -440,15 +435,11 @@ test('generateQRCode', async () => {
     url: 'https://liquid-auth.onrender.com',
     requestId: '34337d4a-0a42-4a51-a418-13a5b7c8e86d',
   };
-  if (typeof window !== 'undefined') {
-    await expect(async () =>
-      generateQRCode({ url: qrFixture.url }),
-    ).rejects.toThrow(new Error(REQUEST_IS_MISSING_MESSAGE));
-    const result = await generateQRCode(qrFixture);
-    expect(result).toBeDefined();
-  } else {
-    await expect(() => generateQRCode(qrFixture)).rejects.toThrow();
-  }
+  await expect(async () =>
+    generateQRCode({ url: qrFixture.url }),
+  ).rejects.toThrow(new Error(REQUEST_IS_MISSING_MESSAGE));
+  const result = await generateQRCode(qrFixture);
+  expect(result).toBeDefined();
 });
 
 test('generateDeepLink', async () => {

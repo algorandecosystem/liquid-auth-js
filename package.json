@@ -65,7 +65,6 @@
     "@semantic-release/github": "^10.0.3",
     "@semantic-release/npm": "^12.0.0",
     "@semantic-release/release-notes-generator": "^13.0.0",
-    "@types/qrcode": "^1.5.5",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
@@ -92,9 +91,8 @@
     "wait-on": "^8.0.3"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
     "eventemitter3": "^5.0.1",
-    "qr-code-styling": "^1.9.1",
+    "qrcode": "^1.5.4",
     "socket.io-client": "^4.7.5",
     "tweetnacl": "^1.0.3",
     "uuid": "^10.0.0"
